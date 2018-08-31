@@ -5,15 +5,28 @@ const fs = require('fs');
 var app = express();
 app.get('/', (req, res, next) => {
 
-    //seting path of file txt
-    var filePath = path.join(__dirname, '../../DB.txt')
-        //extract all line of the file
-    var DB = fs.readFileSync(filePath, 'utf8').toString().split('\n');
-    res.status(200).json({
-        ok: true,
-        msg: "All data for testing propuse",
-        data: DB
-    })
+    try {
+        //seting path of file txt
+        var filePath = path.join(__dirname, '../../DB.txt')
+            //extract all line of the file
+        var DB = fs.readFileSync(filePath, 'utf8').toString().split('\n');
+        res.status(200).json({
+            ok: true,
+            msg: "All data for testing propuse",
+            data: DB
+        })
+
+    } catch (er) {
+
+        res.status(500).json({
+            proce: 'error',
+            data: er
+        })
+
+        console.log(er);
+
+    }
+
 
 });
 
