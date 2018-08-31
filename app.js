@@ -17,7 +17,7 @@ app.use(bodyParser.json())
 
 
 //set controllers reponses
-app.use('/dgii', require('./controllers/dgiiController'))
+app.use('/dgii', require('./server/controllers/dgiiController'))
 app.listen(port, () => {
     console.log(`Node server is running away on port ${port}`)
 });
